@@ -4,6 +4,8 @@ MAINTAINER jsurf
 
 VOLUME ["/var/lib/backuppc"]
 
+RUN [ "cross-build-start" ]
+
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y python python-pip debconf-utils msmtp
 
@@ -28,6 +30,8 @@ RUN sed -i 's/\/usr\/sbin\/sendmail/\/usr\/bin\/msmtp/g' /etc/backuppc/config.pl
 RUN chmod 0755 /run.sh
 
 RUN tar -zf /root/etc-backuppc.tgz -C /etc/backuppc -c .
+
+RUN [ "cross-build-end" ]
 
 ENV MAILHOST mail
 ENV FROM backuppc
