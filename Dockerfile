@@ -1,6 +1,6 @@
-FROM ubuntu:14.04
+FROM jsurf/rpi-raspbian:latest
 
-MAINTAINER ktwe
+MAINTAINER jsurf
 
 VOLUME ["/var/lib/backuppc"]
 
