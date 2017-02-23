@@ -39,5 +39,5 @@ fi
 
 sed -e "s/MAILHOST/$MAILHOST/g" -e "s/FROM/$FROM/g" /var/lib/backuppc/.msmtprc.dist > /var/lib/backuppc/.msmtprc
 
-exec /usr/local/bin/supervisord -c /etc/supervisord.conf
+exec /usr/bin/supervisord -c /etc/supervisord.conf
 

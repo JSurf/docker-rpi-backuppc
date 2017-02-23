@@ -8,9 +8,11 @@ RUN [ "cross-build-start" ]
 
 RUN apt-get update 
 # && apt-get upgrade -y
-RUN apt-get install -y python python-pip debconf-utils msmtp nginx libfcgi-perl
+RUN apt-get install -y supervisor debconf-utils msmtp nginx libfcgi-perl
 
-RUN pip install supervisor
+# forward request and error logs to docker log collector
+RUN ln -sf /dev/stdout /var/log/nginx/access.log \
+	&& ln -sf /dev/stderr /var/log/nginx/error.log
 
 RUN echo "postfix postfix/main_mailer_type select Local only" | debconf-set-selections
 RUN echo "backuppc backuppc/configuration-note note" | debconf-set-selections
@@ -18,6 +20,8 @@ RUN echo "backuppc backuppc/restart-webserver boolean true" | debconf-set-select
 RUN echo "backuppc backuppc/reconfigure-webserver multiselect nginx" | debconf-set-selections
 
 RUN apt-get install -y backuppc
+
+COPY fastcgi-wrapper /usr/local/bin/fastcgi-wrapper
 
 RUN htpasswd -b /etc/backuppc/htpasswd backuppc password
 
