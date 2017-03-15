@@ -41,6 +41,6 @@ ENV FROM backuppc
 
 EXPOSE 80
 
-VOLUME ["/etc/backuppc", "/var/lib/backuppc"
+VOLUME ["/etc/backuppc", "/var/lib/backuppc"]
 
 CMD ["/run.sh"]
