@@ -6,8 +6,8 @@ RUN [ "cross-build-start" ]
 
 # Install nginx, supervisor and backuppc
 RUN apt-get update \
-    && apt-get install -y supervisor debconf-utils msmtp msmtp-mta nginx libfcgi-perl \
-	&& echo "postfix postfix/main_mailer_type select Local only" | debconf-set-selections \
+    && apt-get install -y supervisor debconf-utils msmtp msmtp-mta nginx libfcgi-perl openssh-client \
+    && echo "postfix postfix/main_mailer_type select Local only" | debconf-set-selections \
     && echo "backuppc backuppc/configuration-note note" | debconf-set-selections \
     && echo "backuppc backuppc/restart-webserver boolean true" | debconf-set-selections \
     && echo "backuppc backuppc/reconfigure-webserver multiselect nginx" | debconf-set-selections \
