@@ -11,7 +11,7 @@ RUN apt-get update \
     && echo "backuppc backuppc/configuration-note note" | debconf-set-selections \
     && echo "backuppc backuppc/restart-webserver boolean true" | debconf-set-selections \
     && echo "backuppc backuppc/reconfigure-webserver multiselect nginx" | debconf-set-selections \
-    && apt-get install -y backuppc \
+    && apt-get install -y backuppc libfile-rsyncp-perl libio-dirent-perl \
 	&& rm -rf /var/lib/apt/lists/* 
 
 COPY nginx /etc/nginx
