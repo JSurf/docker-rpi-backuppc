@@ -37,7 +37,7 @@ fi
 # environment variables.  Do this each time to allow mail
 # configuration to change by simply recreating the container.
 
-sed -e "s/MAILHOST/$MAILHOST/g" -e "s/FROM/$FROM/g" /var/lib/backuppc/.msmtprc.dist > /var/lib/backuppc/.msmtprc
+sed -e "s/MAILHOST/$MAILHOST/g" -e "s/FROM/$FROM/g" /etc/backuppc/.msmtprc.dist > /var/lib/backuppc/.msmtprc
 
 exec /usr/bin/supervisord -c /etc/supervisord.conf
 

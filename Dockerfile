@@ -24,7 +24,7 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && htpasswd -b /etc/backuppc/htpasswd backuppc password 
 
 COPY supervisord.conf /etc/supervisord.conf
-COPY msmtprc /var/lib/backuppc/.msmtprc.dist
+COPY msmtprc /etc/backuppc/.msmtprc.dist
 COPY run.sh /run.sh
 COPY ssh-config /etc/backuppc-ssh-config
 	
