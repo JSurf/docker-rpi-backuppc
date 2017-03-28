@@ -4,8 +4,10 @@ if [ ! -e /firstrun ]
 then
 	mkdir /var/lib/backuppc/cpool
 	mkdir /var/lib/backuppc/pc
-	chown backuppc:backuppc /var/lib/backuppc -R
-
+	chown backuppc:backuppc /var/lib/backuppc
+	chown backuppc:backuppc /var/lib/backuppc/cpool
+	chown backuppc:backuppc /var/lib/backuppc/pc
+	
 	echo 1 > /firstrun
 fi
 
